@@ -1,0 +1,25 @@
+.category-card {
+  max-width: 300px;
+  position: relative;
+  
+  
+  &::after {
+    display: block;
+    content: '';
+    padding-top: 50%;
+  }
+  
+  .inner-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    background-color: red;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
