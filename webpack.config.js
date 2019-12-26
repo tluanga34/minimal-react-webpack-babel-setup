@@ -4,17 +4,13 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const jsonImporter = require('node-sass-json-importer');
 
-console.log(path.resolve(__dirname, 'projects/cleanerbin/css/_settings.scss'));
-
 module.exports = (env) => {
 
   const isDevelopment = env.mode === "development";
 
-
   if (!validateArgv(env)) {
     return;
   }
-
 
   return {
     mode: env.mode,
@@ -59,7 +55,10 @@ module.exports = (env) => {
       filename: 'bundle.js'
     },
     plugins: [
-      new HtmlWebpackPlugin(),
+      new HtmlWebpackPlugin({
+        title : env.project,
+        template : `./shared/index_page/index.html`
+      }),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
         filename: isDevelopment ? '[name].css' : '[name].[hash].css',
@@ -75,18 +74,17 @@ module.exports = (env) => {
       hot: true
     }
   };
-
 }
 
 
 function validateArgv(env) {
-  console.log("env");
-  console.log(env);
   if (!env.project) {
     console.error("Please specify the project you want to serve");
     return false;
+  } 
+  else if(["development","production"].indexOf(env.mode) == -1) {
+    console.error("Please specify mode of environment. development or production");
+    return false;
   }
-
   return true;
-
 }
