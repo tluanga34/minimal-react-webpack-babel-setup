@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start:cleanerbin": "webpack-dev-server --env.mode=development --env.project=cleanerbin",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0"
   },
@@ -14,6 +15,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@epegzz/sass-vars-loader": "^5.1.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.4.0",
     "mini-css-extract-plugin": "^0.9.0",

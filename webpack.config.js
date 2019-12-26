@@ -1,8 +1,12 @@
 const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+// const jsonImporter = require('node-sass-json-importer');
+
+console.log(path.resolve(__dirname, 'projects/cleanerbin/css/_settings.scss'));
 
 module.exports = (env) => {
-  
+
   const isDevelopment = env.mode === "development";
 
 
@@ -22,15 +26,22 @@ module.exports = (env) => {
           use: ['babel-loader']
         },
         {
-          test:/\.scss$/,
+          test: /\.scss$/,
           use: [
             "style-loader",
             "css-loader",
-            "sass-loader"
+            {
+              loader: "sass-loader",
+              options: {
+                sassOptions : {
+                  includePaths : [path.resolve(__dirname, `projects/${env.project}/css/`)]
+                }
+              },
+            }
           ]
         },
         {
-          test:/\.css$/,
+          test: /\.css$/,
           use: [
             "style-loader",
             "css-loader"
@@ -51,6 +62,9 @@ module.exports = (env) => {
       new MiniCssExtractPlugin({
         filename: isDevelopment ? '[name].css' : '[name].[hash].css',
         chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css'
+      }),
+      new webpack.DefinePlugin({
+        'process.env.project' : JSON.stringify(env.project)
       })
     ],
     devServer: {
