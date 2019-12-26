@@ -20,7 +20,7 @@
     padding: 10px;
     background-color: $color2;
     color: #fff;
-    border-radius: 10px;
+    border-radius: $card-border-radius;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

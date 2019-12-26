@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const jsonImporter = require('node-sass-json-importer');
 
 console.log(path.resolve(__dirname, 'projects/cleanerbin/css/_settings.scss'));
@@ -53,11 +54,12 @@ module.exports = (env) => {
       extensions: ['*', '.js', '.jsx', '.scss']
     },
     output: {
-      path: __dirname + '/dist',
+      path:  `${__dirname}/dist/${env.project}`,
       publicPath: '/',
       filename: 'bundle.js'
     },
     plugins: [
+      new HtmlWebpackPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
         filename: isDevelopment ? '[name].css' : '[name].[hash].css',
