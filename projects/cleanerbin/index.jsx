@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 // import App from '../../shared/App';
 import '../../src/style.css';
+import "../../shared/assets/css/common/common.css"
+import "../../shared/assets/css/common/paddings.css"
 import CategoryCard from '../../shared/ui_components/category/CategoryCard';
 
 

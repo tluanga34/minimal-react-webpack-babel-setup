@@ -45,7 +45,7 @@ input.border-red,
 }
 
 .btn-next-white {
-  background-image: url(images/right-icon@2x.png);
+  /* background-image: url(images/right-icon@2x.png); */
   background-position: right -6px center;
   background-repeat: no-repeat;
   background-size: 34px;
@@ -375,13 +375,13 @@ input.border-bottom-2,
   display: block;
 }
 
-.down-arrow-icon {
+/* .down-arrow-icon {
   background-image: url(images/down-arrow.png);
 }
 
 .right-arrow-icon {
   background-image: url(images/right-arrow.png);
-}
+} */
 
 .width-70 {
   width: 70%;

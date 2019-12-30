@@ -43,21 +43,30 @@ module.exports = (env) => {
             "style-loader",
             "css-loader"
           ]
-        }
+        },
+        {
+          test: /\.(woff|ttf|woff2|png|jpe?g|gif)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+            },
+          ],
+        },
       ]
     },
     resolve: {
       extensions: ['*', '.js', '.jsx', '.scss']
     },
     output: {
-      path:  `${__dirname}/dist/${env.project}`,
-      publicPath: '/',
+      path:  `${__dirname}/dist/${env.project}/www`,
+      publicPath: './',
       filename: 'bundle.js'
     },
     plugins: [
       new HtmlWebpackPlugin({
         title : env.project,
-        template : `./shared/index_page/index.html`
+        custom : (!isDevelopment && env.target == 'mobile-cordova')? `<script src="cordova.js"></script>` : '',
+        template : `./shared/assets/index_page/index.html`
       }),
       new webpack.HotModuleReplacementPlugin(),
       new MiniCssExtractPlugin({
@@ -70,6 +79,7 @@ module.exports = (env) => {
     ],
     devServer: {
       port: 8080,
+      open: true,
       contentBase: './dist',
       hot: true
     }
