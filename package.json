@@ -1,14 +1,14 @@
 {
-  "name": "minimal-react-webpack-babel-setup",
+  "name": "presto_app_build",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:cleanerbin": "npx webpack-dev-server --env.mode=development --env.project=cleanerbin",
     "build:cleanerbin": "npx webpack --env.mode=production --env.target=mobile-cordova --env.project=cleanerbin",
+    "serve:cleanerbin": "npx webpack-dev-server --env.mode=development --env.project=cleanerbin",
     "build:svl": "npx webpack --env.mode=production --env.target=mobile-cordova --env.project=svl",
-    "start:svl": "npx webpack-dev-server --env.mode=development --env.project=svl",
-    "start": "npx webpack-dev-server --config ./webpack.config.js --mode development",
+    "serve:svl": "npx webpack-dev-server --env.mode=development --env.project=svl",
+    "serve": "npx webpack-dev-server --config ./webpack.config.js --mode development",
     "test": "echo \"No test specified\" && exit 0"
   },
   "keywords": [],
