@@ -80,7 +80,7 @@ module.exports = (env) => {
     devServer: {
       port: 8080,
       open: true,
-      contentBase: './dist',
+      contentBase: `${__dirname}/dist/${env.project}/www`,
       hot: true
     }
   };
